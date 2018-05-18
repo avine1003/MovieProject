@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>前端页面</title>
+</head>
+<body>
+{% for user in mlist %}
+    {% if user.name == 'maozhuxi' %}
+        <h1 style="color: blue">伟人</h1>
+    {% else %}
+    <h1 style="color: red">xxxx前端的登录页面{{ user.name }}</h1>
+    {% endif %}
+{% endfor %}
+</body>
+</html>
