@@ -12,7 +12,7 @@ app.register_blueprint(admin_blueprint, url_prefix='/admin')
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('home/index.html')
 
 
 #################### SQLALCHEMY START ###########

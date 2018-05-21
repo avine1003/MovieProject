@@ -2,7 +2,7 @@
 __author__ = "wuyou"
 __date__ = "2018/5/18 15:39"
 
-from app import db, app
+from app import db
 from app.models import UserInfo
 
 def create_database():

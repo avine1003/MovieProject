@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-
-
 __author__ = "wuyou"
 __date__ = "2018/5/18 9:37"
 
@@ -11,16 +9,12 @@ from . import home
 
 @home.route('/')
 def index():
-    return "<h1 style='color:green'>home主页面</h1>"
+    return render_template('home/index.html')
 
 
 @home.route('/login')
 def home_login():
-    mlist = [{'name': 'jinsanpang'},
-             {'name': 'maozhuxi'},
-             {'name': 'xiaoming'}
-             ]
-    return render_template('home/login.html', mlist=mlist)
+   return render_template("home/login.html")
 
 
 @home.route("/add_user/<string:username>/<string:email>/<string:address>")
