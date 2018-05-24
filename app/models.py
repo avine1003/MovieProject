@@ -46,16 +46,16 @@ class User(db.Model):
         from werkzeug.security import check_password_hash
         return check_password_hash(self.pwd, pwd)
 
-'''
-# 会员登录日志
-class UserLog(db.Model):
-    __tablename__ = 'userlog'
-    id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    ip = db.Column(db.String(100))
-    add_time = db.Column(db.DateTime, index=True, default=datetime.utcnow)
-    def __str__(self):
-        return self.id
+
+# # 会员登录日志
+# class UserLog(db.Model):
+#     __tablename__ = 'userlog'
+#     id = db.Column(db.Integer, primary_key=True)
+#     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+#     ip = db.Column(db.String(100))
+#     add_time = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+#     def __str__(self):
+#         return self.id
 
 
 class Tag(db.Model):
@@ -63,13 +63,13 @@ class Tag(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), unique=True)
     add_time = db.Column(db.DateTime, index=True, default=datetime.utcnow)
-    movies = db.relationship('movie', backref='tag')
+    # movies = db.relationship('movie', backref='tag')
     # 电影外键关联
 
     def __str__(self):
         return self.name
 
-
+'''
 class Movie(db.Model):
     __tablename__ = 'movie'
     id = db.Column(db.Integer, primary_key=True)
@@ -149,6 +149,7 @@ class Role(db.Model):
 
     def __str__(self):
         return self.name
+'''
 
 # 管理员
 class Admin(db.Model):
@@ -157,10 +158,10 @@ class Admin(db.Model):
     name = db.Column(db.String(100), unique=True)
     pwd = db.Column(db.String(100))
     is_super = db.Column(db.SmallInteger)  # 是否为超级管理员, 0为超级管理员
-    role_id = db.Column(db.Integer, db.ForeignKey('role.id'))
+    # role_id = db.Column(db.Integer, db.ForeignKey('role.id'))
     add_time = db.Column(db.DateTime, index=True, default=datetime.utcnow)
-    admin_logs = db.relationship('adminlog', backref='admin')  # 管理员登录日志外键关联
-    op_logs = db.relationship('oplog', backref='admin')   # 管理员操作日志外键关联
+    # admin_logs = db.relationship('adminlog', backref='admin')  # 管理员登录日志外键关联
+    # op_logs = db.relationship('oplog', backref='admin')   # 管理员操作日志外键关联
 
     def __str__(self):
         return self.name
@@ -169,7 +170,7 @@ class Admin(db.Model):
         from werkzeug.security import check_password_hash
         return check_password_hash(self.pwd, pwd)
 
-
+'''
 # 管理员登录日志
 class AdminLog(db.Model):
     __tablename__ = 'adminlog'
