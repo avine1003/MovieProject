@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+import os
+
 __author__ = "wuyou"
 __date__ = "2018/5/18 9:35"
 
@@ -25,6 +27,7 @@ app.config["SQLALCHEMY_DATABASE_URI"] = mysql_conn_str
 # 如果设置成 True (默认情况)，Flask-SQLAlchemy 将会追踪对象的修改并且发送信号。
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = True
 app.config['SECRET_KEY'] = '12345678'
+app.config['UP_DIR'] = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'static/uploads/')
 db = SQLAlchemy(app)
 
 from app import models

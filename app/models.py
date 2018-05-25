@@ -36,7 +36,7 @@ class User(db.Model):
     face = db.Column(db.String(255), unique=True)
     add_time = db.Column(db.DateTime, index=True, default=datetime.utcnow)  # 注册时间
     uuid = db.Column(db.String(255), unique=True)   # 唯一标识
-    # user_logs = db.relationship('userlog', backref='user')   # 会员日志外键关系关联
+    # user_logs = db.relationship('UserLog', backref='user')   # 会员日志外键关系关联
 
     def __str__(self):
         return self.name
@@ -63,13 +63,13 @@ class Tag(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), unique=True)
     add_time = db.Column(db.DateTime, index=True, default=datetime.utcnow)
-    # movies = db.relationship('movie', backref='tag')
+    movies = db.relationship('Movie', backref='tag')
     # 电影外键关联
 
     def __str__(self):
         return self.name
 
-'''
+
 class Movie(db.Model):
     __tablename__ = 'movie'
     id = db.Column(db.Integer, primary_key=True)
@@ -85,12 +85,14 @@ class Movie(db.Model):
     release_time = db.Column(db.Date)  # 上映时间
     length = db.Column(db.String(100))  # 播放时间
     add_time = db.Column(db.DateTime, index=True, default=datetime.utcnow)
-    comments = db.relationship('comment', backref='movie')
-    movie_cols = db.relationship('moviecol', backref='movie')  # 收藏
+    # comments = db.relationship('comment', backref='movie')
+    # movie_cols = db.relationship('moviecol', backref='movie')  # 收藏
 
     def __str__(self):
         return self.title
 
+
+'''
 # 上映预告
 class Preview(db.Model):
     __tablename__ = 'preview'
@@ -145,7 +147,7 @@ class Role(db.Model):
     name = db.Column(db.String(100), unique=True)
     auths = db.Column(db.String(600))  # 角色权限列表
     add_time = db.Column(db.DateTime, index=True, default=datetime.utcnow)
-    admins = db.relationship('admin', backref='role')
+    admins = db.relationship('Admin', backref='role')
 
     def __str__(self):
         return self.name
